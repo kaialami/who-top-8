@@ -1,0 +1,22 @@
+query EventStandings($slug: String!, $page: Int!, $perPage: Int!) {
+  event(slug: $slug) {
+    id
+    name
+    standings(query: {
+      perPage: $perPage,
+      page: $page
+    }){
+      nodes {
+        placement
+        entrant {
+          name
+          participants {
+            user {
+              discriminator
+            }
+          }
+        }
+      }
+    }
+  }
+}
