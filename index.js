@@ -19,7 +19,7 @@ for (const tournament of tournaments) {
         const discriminator = i.entrant.participants[0].user.discriminator;
         topEighters[discriminator] = {
             name: i.entrant.name,
-            highest: Math.max(i.placement, isNaN(topEighters[discriminator]) ? -Infinity : topEighters[discriminator])
+            highest: Math.min(i.placement, topEighters[discriminator] === undefined ? Infinity : topEighters[discriminator].highest)
         }
     }
 }
